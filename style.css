@@ -1,0 +1,175 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #006d77; /* Calming green */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #83c5be;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #006d77, #83c5be); /* Green to blue gradient */
+    color: white;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero .cta-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #006d77;
+    background-color: #edf6f9;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.hero .cta-button:hover {
+    background-color: #83c5be;
+}
+
+/* Section Styling */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #006d77;
+}
+
+.section p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Buttons */
+.load-data-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #83c5be;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.load-data-btn:hover {
+    background-color: #006d77;
+}
+
+/* Data Tables */
+.data-table {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.data-table th {
+    background-color: #83c5be;
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Footer */
+footer {
+    background-color: #006d77;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
