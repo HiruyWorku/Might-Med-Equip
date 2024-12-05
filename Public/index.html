@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MightyMedEquip</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="fotor-20241202132533.png" alt="MightyMedEquip Logo">
+        <h1>MightyMedEquip</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#customers">Customers</a></li>
+            <li><a href="#sales">Sales</a></li>
+            <li><a href="#inventory">Inventory</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h2>Your Trusted Partner in Healthcare Equipment</h2>
+        <p>Innovative solutions for hospitals, clinics, and healthcare facilities worldwide.</p>
+        <a href="#products" class="cta-button">Explore Products</a>
+    </section>
+
+    <section id="products" class="section">
+        <h2>Our Products</h2>
+        <p>Discover the best medical equipment tailored for your healthcare needs.</p>
+        <button class="load-data-btn" onclick="loadProducts()">Load Products</button>
+        <div id="products-container" class="data-table"></div>
+        <form id="add-product-form">
+            <h3>Add Product</h3>
+            <input type="text" id="productName" placeholder="Product Name" required>
+            <input type="number" id="productPrice" placeholder="Price" required>
+            <button type="submit">Add Product</button>
+        </form>
+    </section>
+
+    <section id="customers" class="section">
+        <h2>Our Customers</h2>
+        <p>Trusted by leading healthcare providers globally.</p>
+        <button class="load-data-btn" onclick="loadCustomers()">Load Customers</button>
+        <div id="customers-container" class="data-table"></div>
+        <form id="add-customer-form">
+            <h3>Add Customer</h3>
+            <input type="text" id="customerName" placeholder="Customer Name" required>
+            <input type="email" id="customerEmail" placeholder="Email" required>
+            <button type="submit">Add Customer</button>
+        </form>
+    </section>
+
+    <section id="sales" class="section">
+        <h2>Monthly Sales</h2>
+        <p>Stay updated on our performance and growth.</p>
+        <button class="load-data-btn" onclick="loadSales()">Load Sales</button>
+        <div id="sales-container" class="data-table"></div>
+    </section>
+
+    <section id="inventory" class="section">
+        <h2>Inventory Status</h2>
+        <p>Monitor stock levels and ensure uninterrupted operations.</p>
+        <button class="load-data-btn" onclick="loadInventory()">Load Inventory</button>
+        <div id="inventory-container" class="data-table"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 MightyMedEquip. All rights reserved.</p>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    async function loadProducts() {
+        const response = await fetch('/get-products');
+        const products = await response.json();
+        const container = document.getElementById('products-container');
+        container.innerHTML = '';
+        products.forEach(product => {
+            const div = document.createElement('div');
+            div.textContent = `Name: ${product.name}, Price: $${product.price}`;
+            container.appendChild(div);
+        });
+    }
+
+    async function loadCustomers() {
+        const response = await fetch('/get-customers');
+        const customers = await response.json();
+        const container = document.getElementById('customers-container');
+        container.innerHTML = '';
+        customers.forEach(customer => {
+            const div = document.createElement('div');
+            div.textContent = `Name: ${customer.name}, Email: ${customer.email}`;
+            container.appendChild(div);
+        });
+    }
+
+    async function loadSales() {
+        const response = await fetch('/get-sales');
+        const sales = await response.json();
+        const container = document.getElementById('sales-container');
+        container.innerHTML = '';
+        sales.forEach(sale => {
+            const div = document.createElement('div');
+            div.textContent = `Date: ${sale.date}, Amount: $${sale.amount}`;
+            container.appendChild(div);
+        });
+    }
+
+    async function loadInventory() {
+        const response = await fetch('/get-inventory');
+        const inventory = await response.json();
+        const container = document.getElementById('inventory-container');
+        container.innerHTML = '';
+        inventory.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = `Item: ${item.name}, Quantity: ${item.quantity}`;
+            container.appendChild(div);
+        });
+    }
+
+    document.getElementById('add-product-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const name = document.getElementById('productName').value;
+        const price = document.getElementById('productPrice').value;
+
+        const response = await fetch('/add-product', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, price }),
+        });
+
+        const result = await response.json();
+        alert(result.message);
+        loadProducts();
+    });
+
+    document.getElementById('add-customer-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const name = document.getElementById('customerName').value;
+        const email = document.getElementById('customerEmail').value;
+
+        const response = await fetch('/add-customer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email }),
+        });
+
+        const result = await response.json();
+        alert(result.message);
+        loadCustomers();
+    });
+</script>
+</body>
+</html>
