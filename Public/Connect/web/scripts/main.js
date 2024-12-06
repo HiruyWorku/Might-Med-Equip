@@ -23,7 +23,7 @@ function req(username) {
       const data = JSON.parse(this.response);
 
       for (i = 0; i < data.length; i++) {
-        if (data[i].name == "osutools") {
+        if (data[i].name == "ray") {
           document.getElementById("lastModified").innerHTML = "Last modified: " + data[i].updated_at.slice(0, 10) + " at " + data[i].updated_at.slice(11, 19) + " UTC";
         }
       }
