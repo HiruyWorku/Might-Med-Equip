@@ -1,0 +1,159 @@
+$primary: #907fa4;
+$secondary: #a58faa;
+$tertiary: #ededd0;
+$highlight: #a6d6d6;
+
+$macro-whitespace: 15%;
+
+@mixin container-inner-shadow($round: false) {
+    background-color: $tertiary;
+    color: $primary;
+    box-shadow: inset 0px 0px 20px $secondary;
+
+    @if $round {
+        border-radius: 50px;
+    }
+}
+p {
+    font-size: 1.5rem;
+}
+
+a {
+    color: $secondary;
+}
+
+.navbar-title {
+    font-size: 3rem;
+
+    padding-left: 2rem;
+    text-align: center;
+}
+
+.navbar {
+    position: sticky;
+    z-index: 10;
+
+    width: 100%;
+    height: 5rem;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+
+    background-color: $primary;
+    color: $tertiary;
+}
+
+body {
+    font-family: "Rubik", Arial, Helvetica, sans-serif;
+
+    font-weight: 400;
+    margin: 0;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    background-color: $secondary;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 2rem;
+    padding: 0 $macro-whitespace;
+
+    text-align: center;
+    justify-content: center;
+
+    @include container-inner-shadow();
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 0 $macro-whitespace;
+}
+
+.accordion {
+    @include container-inner-shadow(true);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-bottom: 0.5rem;
+
+    font: inherit;
+    font-size: 3rem;
+    border: none;
+
+    transition: color 0.3s;
+
+    .caret {
+        transition: all 0.5s;
+        width: 4rem;
+        height: 4rem;
+
+        mask: url(../assets/caret.svg) no-repeat 50% 50%;
+        mask-size: cover;
+
+        background-color: $primary;
+    }
+}
+
+.active,
+.accordion:hover {
+    font-weight: bold;
+    color: $secondary;
+}
+
+.active .caret {
+    transform: rotate(180deg);
+    background-color: $highlight;
+}
+
+.panel {
+    @include container-inner-shadow(true);
+    width: 100%;
+    padding: 0 2rem;
+    margin-bottom: 0.5rem;
+    box-sizing: border-box;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    li {
+        font-size: 1.75rem;
+
+        p {
+            margin-top: 0.3rem;
+        }
+        code {
+            font-size: 1rem;
+        }
+        a {
+            font-weight: bold;
+        }
+    }
+}
+
+footer {
+    background-color: $primary;
+    color: $tertiary;
+
+    padding: 1rem;
+
+    p {
+        margin: 0;
+    }
+}
