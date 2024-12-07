@@ -1,6 +1,19 @@
 # Might-Med-Equip
-....To run this application, ensure that GoLang is installed on your system and accessible from your VS Code terminal. Follow these steps:
 
-1. Navigate to the directory containing the server.go file (typically the "Public" folder or wherever the file is located).
-2. In the terminal, run the following command: "go run server.go"
-3. This command will execute the code and start a server. It will open a specific port (e.g., http://localhost:3000) that you can access in your browser.
+This application is a GoLang-based project designed to run locally on your system. Follow the steps below to set up and execute the application.
+
+## Prerequisites
+
+- Ensure that GoLang is installed and properly set up on your system.
+- Make sure your VS Code terminal or any terminal you choose can access GoLang commands.
+
+## How to Run
+
+1. **Navigate to the Application Directory**  
+   Open your terminal and navigate to the directory containing the `server.go` file. This is located in `connect` in the `Public` folder or where the file resides.
+
+2. **Run the Server**  
+   Execute the following command in your terminal:
+   ```bash
+   go run server.go
+
