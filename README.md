@@ -13,7 +13,7 @@ This application is a GoLang-based project designed to run locally on your syste
    Open your terminal and navigate to the directory containing the `server.go` file. This is located in `connect` in the `Public` folder or where the file resides.
 
 2. **Run the Server**  
-   Execute the following command in your terminal:
+   Execute the following command in your terminal
    ```bash
    go run server.go
 
